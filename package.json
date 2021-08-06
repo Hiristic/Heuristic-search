@@ -1,5 +1,6 @@
 {
-  "name": "app-search-reference-ui-react",
+  "name": "heuristic-search",
+  "homepage": "https://hiristic.github.io/heuristic-search",
   "version": "1.2.0",
   "license": "Apache-2.0",
   "private": true,
