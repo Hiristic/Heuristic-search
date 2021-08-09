@@ -1,0 +1,34 @@
+{
+  "engineName": "imvelo-base",
+  "endpointBase": "https://imvelo.ent.eu-central-1.aws.cloud.es.io",
+  "searchKey": "search-ft3sis16528gvw2qudspxa2a",
+  "resultFields": [
+    "faroangivelse_kod",
+    "innehall",
+    "produkt",
+    "halt",
+    "cas_nr",
+    "klass_miljo",
+    "faroklass",
+    "klass_halsa",
+    "klass_fys",
+    "faroktegori",
+    "amnesnamn",
+    "eg_nr",
+    "id"
+  ],
+  "sortFields": [
+    "amnesnamn"
+  ],
+  "facets": [
+    "faroklass",
+    "faroktegori",
+    "faroangivelse_kod",
+    "klass_fys",
+    "klass_halsa",
+    "klass_miljo",
+    "produkt"
+  ],
+  "titleField": "amnesnamn",
+  "urlField": "produkt"
+}
