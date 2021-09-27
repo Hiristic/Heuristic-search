@@ -3,7 +3,6 @@
 # dependencies
 /node_modules
 node_modules
-
 # testing
 /coverage
 
@@ -20,9 +19,12 @@ node_modules
 .netlify
 
 .vscode/
+.idea/
 
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-#src/config/engine.json
+src/config/engine.json
+
+Pipeline

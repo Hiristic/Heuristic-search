@@ -1,34 +1,23 @@
 {
-  "engineName": "imvelo-base",
-  "endpointBase": "https://imvelo.ent.eu-central-1.aws.cloud.es.io",
-  "searchKey": "search-ft3sis16528gvw2qudspxa2a",
+  "engineName": "product-db",
+  "endpointBase": "https://ea2b9e38cdb6410b8ac920c8bbe2831c.ent-search.eu-central-1.aws.cloud.es.io",
+  "searchKey": "search-gbqhz98zc8apb3iqhpx2fcz9",
   "resultFields": [
-    "faroangivelse_kod",
-    "innehall",
+    "ingredienser",
+    "kemikalier",
     "produkt",
-    "halt",
-    "cas_nr",
-    "klass_miljo",
-    "faroklass",
-    "klass_halsa",
-    "klass_fys",
-    "faroktegori",
-    "amnesnamn",
-    "eg_nr",
+    "kategori",
+    "ingredienser_list",
+    "leverantor",
     "id"
   ],
   "sortFields": [
-    "amnesnamn"
-  ],
-  "facets": [
-    "faroklass",
-    "faroktegori",
-    "faroangivelse_kod",
-    "klass_fys",
-    "klass_halsa",
-    "klass_miljo",
     "produkt"
   ],
-  "titleField": "amnesnamn",
-  "urlField": "produkt"
+  "facets": [
+    "kemikalier",
+    "leverantor",
+    "kategori"
+  ],
+  "titleField": "produkt"
 }
