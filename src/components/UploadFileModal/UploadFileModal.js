@@ -10,7 +10,7 @@ import FileIcon from 'material-ui/svg-icons/file/attachment'
 import CircularProgress from 'material-ui/CircularProgress'
 
 const UploadFileModal = (props) => {
-    const { 
+    const {
         open,
         fetching,
         toggleModal,
@@ -18,7 +18,7 @@ const UploadFileModal = (props) => {
         removeFileToUpload,
         filesToUpload,
         uploadFiles,
-        localization 
+        localization
     } = props
 
     const onDrop = (acceptedFiles, rejectedFiles) => addFilesToUpload(acceptedFiles)
@@ -46,7 +46,7 @@ const UploadFileModal = (props) => {
         borderColor: '#BDBDBD',
         borderStyle: 'dashed',
         borderRadius: '5px',
-        backgroundColor: '#E0E0E0'
+        backgroundColor: '#E5F58A'
     }
 
     const uploadFrameActiveStyle = {
