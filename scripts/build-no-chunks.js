@@ -13,3 +13,5 @@ config.optimization.splitChunks = {
 };
 
 config.optimization.runtimeChunk = false;
+
+
