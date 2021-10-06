@@ -4,8 +4,13 @@
   "license": "Apache-2.0",
   "private": true,
   "dependencies": {
+    "@chakra-ui/icons": "^1.0.15",
+    "@chakra-ui/react": "^1.6.8",
     "@elastic/react-search-ui": "1.7.0",
     "@elastic/search-ui-app-search-connector": "1.7.0",
+    "@emotion/react": "^11.4.1",
+    "@emotion/styled": "^11.3.0",
+    "framer-motion": "^4.1.17",
     "prop-types": "^15.7.2",
     "radium": "^0.26.1",
     "react": "^17.0.2",

@@ -9,50 +9,46 @@
     <meta name="theme-color" content="#000000" />
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
     <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico" />
+   
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,300&display=swap" rel="stylesheet">
+
+
+
+
     <title>App Search Reference UI</title>
     <style>
       h1 {
+        font-family: 'Cormorant Garamond', serif;
         color: #327B84;
         text-align: center;
+        font-size: 50px !important;
+        margin-top: 10px !important;
       }
-      .sui-layout-body__inner {
-        background-color: #ecdf93;
-      }
-
-      .sui-layout-header{
-        border: none !important;
-      }
-
-      .sui-layout-body {
-        background-color: #C3E6E0 !important;
-      }
-
-      body {
-        background-color: #C3E6E0;
-      }
-      .sui-search-box__submit {
-        background-color: #327B84;
-      }
-      .sui-search-box__text-input{
+      footer {
+        text-align: center;
+        color: #327B84;
         padding: 10px !important;
+        margin: 30px !important;
+        border-top: 1px solid #327B84;
       }
-      .sui-search-box__submit{
-        padding: 10px !important;
-        background-color: #327B84 !important;
+
+      .Navbars::after{
+        outline: transparent solid 2px;
+        outline-offset: 2px;
+        border-color: #1beaa0;
       }
-      .sui-layout-body:after {
-        background: #C3E6E0 !important;
-        }
-        .sui-facet__title, .sui-sorting__label{ 
-          color: #327B84 !important;;
-        }
       </style>
   </head>
 
   <body>
-    <header> 
-     <h1>Välkommen till Heuristics Search</h1> 
+    <header>
+     
+        <h1>Välkommen till Heuristics Search</h1>
+     
     </header>
+
     <noscript>
       You need to enable JavaScript to run this app.
     </noscript>
