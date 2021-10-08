@@ -1,16 +1,16 @@
-// import { Result } from "@elastic/react-search-ui";
+import { Result } from "@elastic/react-search-ui";
 
-// export class MyResult extends Result {
+export class MyResult extends Result {
 
-//     render() {
-//         return (
-//             <div>
-//                 <button {...this.props}>
-//                     Click me!
-//                 </button>
-//             </div>
-//         )
-//     }
-// }
+     render() {
+         return (
+             <div>
+                 <button {...this.props}>
+                     Click me!
+                 </button>
+             </div>
+         )
+     }
+ }
 
-// export default MyResult;
+ export default MyResult;
