@@ -1,36 +1,71 @@
 import PropTypes from "prop-types";
-import React from "react";
+import React, { Component } from "react";
+import { Result, Results } from "@elastic/react-search-ui-views";
 
+import { withSearch } from "@elastic/react-search-ui";
+import { ResultContainer } from "./Result";
+import { Result as ResultType } from "@elastic/react-search-ui";
 
-function getNewClassName(newClassName) {
-    if (!Array.isArray(newClassName)) return newClassName;
-
-    return newClassName.filter(name => name).join(" ");
+function getRaw(result, value) {
+    if (!result[value] || !result[value].raw) return;
+    return result[value].raw;
 }
 
-function appendClassName(baseClassName, newClassName) {
-    if (!newClassName) return baseClassName || "";
-    if (!baseClassName) return getNewClassName(newClassName) || "";
-    return `${baseClassName} ${getNewClassName(newClassName)}`;
+export class ResultsContainer extends Component {
+    static propTypes = {
+        // Props
+        className: PropTypes.string,
+        clickThroughTags: PropTypes.arrayOf(PropTypes.string),
+        resultView: PropTypes.func,
+        titleField: PropTypes.string,
+        urlField: PropTypes.string,
+        thumbnailField: PropTypes.string,
+        view: PropTypes.func,
+        shouldTrackClickThrough: PropTypes.bool,
+        // State
+        //results: PropTypes.arrayOf(ResultType).isRequired
+        results: PropTypes.array
+    };
+
+    static defaultProps = {
+        clickThroughTags: [],
+        shouldTrackClickThrough: true
+    };
+
+    render() {
+        const {
+            className,
+            clickThroughTags,
+            resultView,
+            results,
+            shouldTrackClickThrough,
+            titleField,
+            urlField,
+            thumbnailField,
+            view,
+            ...rest
+        } = this.props;
+
+        const View = view || Results;
+        const ResultView = resultView || Result;
+
+        return View({
+            className: className,
+            children: results.map(result => (
+                <ResultContainer
+                    key={`result-${getRaw(result, "id")}`}
+                    titleField={titleField}
+                    urlField={urlField}
+                    thumbnailField={thumbnailField}
+                    view={ResultView}
+                    result={result}
+                    shouldTrackClickThrough={shouldTrackClickThrough}
+                    clickThroughTags={clickThroughTags}
+                />
+            )),
+            ...rest
+        });
+    }
 }
 
-
-
-
-function Results({ children, className, ...rest }) {
-    return (
-        <ul
-            className={appendClassName("sui-results-container", className)}
-            {...rest}
-        >
-            {children}
-        </ul>
-    );
-}
-
-Results.propTypes = {
-    children: PropTypes.node.isRequired,
-    className: PropTypes.string
-};
-
-export default Results;
+export default withSearch(({ results }) => ({ results }))(ResultsContainer);

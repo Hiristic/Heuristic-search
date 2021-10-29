@@ -1,20 +1,7 @@
 import React from "react";
 
 import AppSearchAPIConnector from "@elastic/search-ui-app-search-connector";
-import { purityuidashboard } from "@chakra-ui/react";
-
-import { ChakraProvider, Tabs, TabList, Box, Image, TabPanels, Tab, TabPanel, Input, Button, useDisclosure } from "@chakra-ui/react";
-
-
-import {
-  Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalFooter,
-  ModalBody,
-  ModalCloseButton,
-} from "@chakra-ui/react"
+import { Grid, Link, Flex, useDisclosure, FormControl, Switch, FormLabel, Modal, ModalBody, ModalCloseButton, ModalHeader, Button, onOpen, isOpen, onClose, ModalOverlay, ModalContent, ChakraProvider, Box, Text, Center } from "@chakra-ui/react"
 
 
 import {
@@ -24,15 +11,16 @@ import {
   PagingInfo,
   ResultsPerPage,
   Paging,
-  SearchBox,
   Sorting,
   WithSearch,
   Results,
   Result
 } from "@elastic/react-search-ui";
 
-// import { MyResult as Result } from "./components/MyResult";
-// import { MyResults as Results } from "./components/MyResults";
+import SearchBox from "./components/SearchBox"
+import NavBar from "./components/NavBar"
+import SideBar from "./components/SideBar"
+import { MyResult } from "./components/MyResult";
 import Navbar from "./components/NavBar";
 import { Layout } from "@elastic/react-search-ui-views";
 import "@elastic/react-search-ui-views/lib/styles/styles.css";
@@ -64,73 +52,54 @@ const config = {
 };
 
 
-
 export default function App() {
 
 
-  const { isOpen, onOpen, onClose } = useDisclosure()
-
-
   return (
-    <ChakraProvider>
-      <SearchProvider config={config}>
-        <WithSearch mapContextToProps={({ wasSearched }) => ({ wasSearched })}>
-          {({ wasSearched }) => {
+    <SearchProvider config={config}>
+      <WithSearch
+        mapContextToProps={({ searchTerm, setSearchTerm, results }) => ({
+          searchTerm,
+          setSearchTerm,
+          results
+        })}
+      >
+        {({ searchTerm, setSearchTerm, results }) => {
 
-
-            return (
-              <div className="App">
-                <ErrorBoundary>
-
-                  <Navbar />
-
-                  <Layout
-                    header={
-                      <Box>
-                        <SearchBox autocompleteSuggestions={true} />
+          return (
+            <ChakraProvider>
+              <Center>
+                <Box w="1000px">
+                  <NavBar w="100%" />
+                  <Box w="100%">
+                    <input
+                      value={searchTerm}
+                      onChange={e => setSearchTerm(e.target.value)}
+                    />
+                    <SearchBox />
+                    <Flex w="100%">
+                      <Box w="30%">
+                        <SideBar />
                       </Box>
-                    }
+                      <Box w="70%" borderWidth="1px" borderColor="#4FD1C5" borderRadius="lg" overflow="hidden" ml="20px" mb="3">
+                        {results.map((r, i) => {
+                          return (
+                            <MyResult key={i} result={r} />
+                          );
+                        })}
+                      </Box>
+                    </Flex>
 
-                    sideContent={
-                      <div>
-                        {wasSearched && (
-                          <Sorting
-                            label={"Sort by"}
-                            sortOptions={buildSortOptionsFromConfig()}
-                          />
-                        )}
-                        {getFacetFields().map(field => (
-                          <Facet key={field} field={field} label={field} />
-                        ))}
-                      </div>
-
-                    }
-
-
-                    bodyContent={
-                      <Results
-                        titleField={getConfig().titleField}
-                        urlField={getConfig().urlField}
-                        shouldTrackClickThrough={true}
-                      />
-                    }
-
-                    bodyHeader={
-                      <React.Fragment>
-                        {wasSearched && <PagingInfo />}
-                        {wasSearched && <ResultsPerPage />}
-                      </React.Fragment>
-                    }
-
-                    bodyFooter={<Paging />}
-                  />
-                  <footer>Copyright ©2021 Hiristic</footer>
-                </ErrorBoundary>
-              </div>
-            );
-          }}
-        </WithSearch>
-      </SearchProvider>
-    </ChakraProvider>
+                  </Box>
+                  <footer>
+                    Copyright © 2021 <Link href="http://hiristic.se/">Hiristic.se</Link>
+                  </footer>
+                </Box>
+              </Center>
+            </ChakraProvider>
+          );
+        }}
+      </WithSearch>
+    </SearchProvider>
   );
 }

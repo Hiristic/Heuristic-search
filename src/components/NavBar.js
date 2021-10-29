@@ -7,12 +7,12 @@ import {
     BreadcrumbSeparator,
 } from "@chakra-ui/react";
 
-function Navbars() {
+function NavBar() {
 
     return (
 
         <BrowserRouter>
-            <Breadcrumb spacing="8px" marginLeft="73%">
+            <Breadcrumb spacing="8px" marginLeft="73%" color="#4FD1C5">
                 <BreadcrumbItem>
                     <BreadcrumbLink href="/home">Home</BreadcrumbLink>
                 </BreadcrumbItem>
@@ -32,4 +32,4 @@ function Navbars() {
     );
 }
 
-export default Navbars;
+export default NavBar;
